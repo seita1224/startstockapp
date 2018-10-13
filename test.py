@@ -1,6 +1,10 @@
 from bottle import route, run
-from bottle import get, post, request
+from bottle import get, post, request,redirect
 
+
+@route('/', method='GET')
+def defult():
+    redirect("/login")
 
 @route('/login', method='GET')  # or @get('/login')
 def login():
