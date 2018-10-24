@@ -23,7 +23,7 @@ def login():
         </form>
     '''.format(username=username, password=password)
 
-#a
+#a#a
 @route('/login', method='POST')  # or @post('/post')
 def do_login():
     username = request.forms.get('username')
