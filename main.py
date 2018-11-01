@@ -4,7 +4,10 @@ from bottle import get, post, request,redirect
 
 @route('/', method='GET')
 def defult():
-    return "main"
+    test = "test"
+    test = 12345
+
+    return test
 
 
-run(host='localhost', port=8080, debug=True)
+run(host='0.0.0.0', port=8080)
