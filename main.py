@@ -1,8 +1,10 @@
-from bottle import Bottle, route, run, template,default_app
+from bottle import Bottle, route, run, template
 # todo bottleの設定の一元管理構想設定クラス(作成中)
 from config.config import Setting
 import bottle
+from controller.parseweb import ParseWeb
 
+app = Bottle()
 
 # todo bottleの設定の一元管理構想(作成中)
 # app = Setting(bottle)
@@ -13,13 +15,14 @@ bottle.TEMPLATE_PATH += ["./" + file_main_path + "/css"]
 bottle.TEMPLATE_PATH += ["./" + file_main_path + "/js"]
 
 
-@route('/', method='GET')
+@app.route('/', method='GET')
 def defult():
-
-    return template("index")
+    parse_web = ParseWeb()
+    # todo webサイト解析処理
+    return template(parse_web.date_parse())
 
 
 if __name__ == "__main__":
-    run(host="0.0.0.0", quiet=False, reloader=True)
+    run(app=app, host="0.0.0.0", quiet=False, reloader=True)
 else:
-    application = default_app()
+    application = app
